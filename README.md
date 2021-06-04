@@ -1,5 +1,4 @@
-# tkinter-label
-Tkinterのlabelについてのコード
+# tkinter-bind
+Tkinterのbindについてのコード
 
 # 参考記事
-https://kuroro.blog/python/Pj4Z7JBNRvcHZvtFqiKD/
