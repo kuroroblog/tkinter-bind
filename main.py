@@ -34,7 +34,7 @@ class Application(tk.Frame):
         # イベントと関数の実行を紐づける。
         # 第一引数 : イベント内容。label Widgetがクリックされた場合
         # 第二引数 : 第一引数が実行された場合に、呼び出す関数。self.getAddFuncとする。
-        # 第三引数 : ''か'+'を指定する。
+        # 第三引数 : ''か'+'を指定する。(デフォルト : '')
         # ''の場合、一つ前のbind関数で宣言された関数を実行しないで、今回bindする関数を実行する。今回の場合、self.getEventDetailを実行しないで、self.getAddFuncを実行する。
         # '+'の場合、一つ前のbind関数で宣言された関数を実行して、今回bindする関数を実行する。今回の場合、self.getEventDetailを実行して、self.getAddFuncを実行する。
         # 戻り値 : なし
