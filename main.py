@@ -2,11 +2,12 @@ import tkinter as tk
 
 
 class Application(tk.Frame):
-    # bindするイベント詳細を取得する関数
+    # 関数に紐づく、イベントの詳細情報を取得する関数
+    # event : イベント詳細情報
     def getEventDetail(self, event):
         print(event.keysym)
 
-    # 追加bind用関数。実行される場合に、hello worldを出力する。
+    # 追加bind用の関数。実行される場合に、hello worldを出力する。
     def getAddFunc(self, event):
         print('hello world')
 
@@ -18,22 +19,24 @@ class Application(tk.Frame):
         # geometryについて : https://kuroro.blog/python/rozH3S2CYE0a0nB3s2QL/
         self.master.geometry("300x200")
 
-        # label Widgetを作成する。
+        # Windowを親要素として、label Widgetを作成する。
         # text : テキスト情報
-        # labelについて : https://kuroro.blog/python/Pj4Z7JBNRvcHZvtFqiKD/
-        label = tk.Label(text="test")
+        # bg : 背景色を設定
+        # 色について : https://kuroro.blog/python/YcZ6Yh4PswqUzaQXwnG2/
+        # Labelについて : https://kuroro.blog/python/Pj4Z7JBNRvcHZvtFqiKD/
+        label = tk.Label(self.master, text="test", bg='blue')
 
         # イベントと関数の実行を紐づける。
         # 第一引数 : イベント内容。label Widgetがクリックされた場合
-        # 第二引数 : 第一引数が試行された場合に、実行する関数名。getEventDetailとする。
+        # 第二引数 : 第一引数が実行された場合に、呼び出す関数名。self.getEventDetailとする。
         # 戻り値 : なし
         label.bind("<ButtonPress>", self.getEventDetail)
         # イベントと関数の実行を紐づける。
         # 第一引数 : イベント内容。label Widgetがクリックされた場合
-        # 第二引数 : 第一引数が試行された場合に、実行する関数名。getAddFuncとする。
+        # 第二引数 : 第一引数が実行された場合に、呼び出す関数名。self.getAddFuncとする。
         # 第三引数 : ''か'+'を指定する。
-        # ''の場合、前コードのbindで宣言された関数名を実行しないで今回bindする関数名を実行する。今回の場合、getEventDetailを実行しないで、getAddFuncを実行する。
-        # '+'の場合、前コードのbindで宣言された関数名を実行して、今回bindする関数名を実行する。今回の場合、getEventDetailを実行して、getAddFuncを実行する。
+        # ''の場合、前コードのbindで宣言された関数名を実行しないで今回bindする関数名を実行する。今回の場合、self.getEventDetailを実行しないで、self.getAddFuncを実行する。
+        # '+'の場合、前コードのbindで宣言された関数名を実行して、今回bindする関数名を実行する。今回の場合、self.getEventDetailを実行して、self.getAddFuncを実行する。
         # 戻り値 : なし
         label.bind("<ButtonPress>", self.getAddFunc, '+')
 
@@ -46,6 +49,7 @@ class Application(tk.Frame):
 if __name__ == "__main__":
     root = tk.Tk()
     app = Application(master=root)
+
     # Windowをループさせて、継続的にWindow表示させる。
     # mainloopについて : https://kuroro.blog/python/DmJdUb50oAhmBteRa4fi/
     app.mainloop()
